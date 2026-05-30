@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇧🇷 Seleção Brasileira — Prancheta Tática</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="campo.css">
+    <!-- html2canvas — biblioteca de captura de tela -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+     
+    <!-- CONTAINER MESTRE DO GRID -->
+    <div class="conteudo-principal">
+
+        <!-- COLUNA DA ESQUERDA: TITULO, CONTROLES, CAMPO E BANCO -->
+        <div class="coluna-esquerda">
+            
+            <div class="titulo-brasil">
+               <div class="estrelas">⭐⭐⭐⭐⭐</div>
+               <h1>Seleção Brasileira</h1>
+                   <p class="subtitulo">Prancheta Tática</p>
+            </div>
+
+            <div class="controles">
+
+                <div class="media-time">
+
+                  <span>Overall médio</span>
+                  <strong id="mediaTime">—</strong>
+
+                </div>
+
+                <select class="select-formacao">
+                    <option value="4-3-3">4-3-3</option>
+                    <option value="4-4-2">4-4-2</option>
+                    <option value="3-5-2">3-5-2</option>
+                    <option value="5-3-2">5-3-2</option>
+                </select>
+
+                <div class="ferramentas-taticas">
+
+                    <button class="btn-ferramenta ativo" data-ferramenta="cursor" title="Mover jogadores">
+                      <i class="fas fa-mouse-pointer"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" data-ferramenta="seta" title="Desenhar seta reta">
+                      <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" data-ferramenta="seta-curva" title="Desenhar seta curva">
+                      <i class="fas fa-bezier-curve"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" data-ferramenta="circulo" title="Desenhar círculo">
+                      <i class="fas fa-circle"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" data-ferramenta="zona" title="Desenhar zona">
+                      <i class="fas fa-square"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" data-ferramenta="texto" title="Inserir texto tático">
+                      <i class="fas fa-font"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" data-ferramenta="borracha" title="Borracha">
+                      <i class="fas fa-eraser"></i>
+                    </button>
+
+                    <button class="btn-ferramenta" id="btnLimparDesenho" title="Limpar tudo">
+                      <i class="fas fa-trash"></i>
+                    </button>
+
+                </div>
+
+                  <button class="btn-compartilhar" id="btnCompartilhar">
+                    <i class="fas fa-camera"></i> Exportar
+                  </button>
+
+            </div>
+
+            <div class="temas-botoes">
+                <button class="botao-tema" data-tema="classico">🟢 Clássico</button>
+                <button class="botao-tema" data-tema="noturno">🌙 Noturno</button>
+                <button class="botao-tema" data-tema="chuvoso">🌧️ Chuvoso</button>
+                <button class="botao-tema" data-tema="neon">⚡ Neon</button>
+                <button class="botao-tema" data-tema="retro">📺 Retrô</button>
+            </div>
+
+            <div class="campo-wrapper">
+
+                <div class="campo">
+
+                    <div class="campo-grama"></div>
+                    <div class="linha-meio"></div>
+                    <div class="circulo-meio"></div>
+                    <div class="ponto-centro"></div>
+                    <div class="area-esquerda"></div>
+                    <div class="area-direita"></div>
+                    <div class="pequena-area-direita"></div> 
+                    <div class="pequena-area-esquerda"></div> 
+                    <div class="ponto-esquerda"></div>
+                    <div class="ponto-direita"></div>
+                    <div class="gol-esquerda"></div>
+                    <div class="gol-direita"></div>
+                
+                    <!-- Construção dos titulares (Cards removidos daqui, serão injetados na direita) -->
+                    <div class="jogador" data-jogador="atacanteDir" style="left: 71.25%; top: 74%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">7</span>
+                    </div>
+            
+                    <div class="jogador" data-jogador="centroAvante" style="left: 81.25%; top: 42.4%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">9</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="atacanteEsq" style="left: 71.25%; top: 14%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">11</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="meioDir" style="left: 51.25%; top: 62%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">8</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="meioEsq" style="left: 51.25%; top: 22%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">10</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="meioCentro" style="left: 45%; top: 42.4%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">6</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="lateralDir" style="left: 27.5%; top: 79%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">5</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="lateralEsq" style="left: 27.5%; top: 6%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">4</span>
+                    </div>
+                    
+                    <div class="jogador" data-jogador="zageiroEsq" style="left: 18.75%; top: 28%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">3</span>
+                    </div>
+
+                    <div class="jogador" data-jogador="zageiroDir" style="left: 18.75%; top: 56%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">2</span>   
+                    </div>
+
+                    <div class="jogador" data-jogador="goleiro" style="left: 2.5%; top: 42.4%;">
+                        <img src="imagens/c.png" alt="camisa">
+                        <span class="numero">1</span>
+                    </div>
+
+                    <!-- Canvas para as linhas de passe -->
+                    <canvas id="canvasLinhas"></canvas>
+                    <canvas id="canvasCalor"></canvas>
+                    <canvas id="canvasDesenho"></canvas>
+                </div>
+
+            </div>
+
+              <!-- Banco de reservas -->
+            <div class="banco-area">
+
+                <h2 class="banco-titulo">🇧🇷 Banco de Reservas</h2>
+
+                    <div class="banco">
+
+                        <div class="reserva" data-reserva="reserva1">
+                           <img src="imagens/reserva1.png" alt="reserva" style="display:none;">
+                           <span class="numero-reserva">12</span>
+                           <p class="nome-reserva">Weverton</p>
+                           <p class="posicao-reserva">Goleiro</p>
+                       </div>
+
+                       <div class="reserva" data-reserva="reserva2">
+                           <img src="imagens/reserva2.png" alt="reserva" style="display:none;">
+                           <span class="numero-reserva">13</span>
+                           <p class="nome-reserva">Danilo</p>
+                           <p class="posicao-reserva">Lateral</p>
+                       </div>
+
+                       <div class="reserva" data-reserva="reserva3">
+                           <img src="imagens/reserva3.png" alt="reserva" style="display:none;">
+                           <span class="numero-reserva">14</span>
+                           <p class="nome-reserva">Bremer</p>
+                           <p class="posicao-reserva">Zagueiro</p>
+                       </div>
+
+                       <div class="reserva" data-reserva="reserva4">
+                        <img src="imagens/andreas-pereira.png" style="display: none;" alt="reserva" >
+                           <span class="numero-reserva">15</span>
+                           <p class="nome-reserva">Andreas</p>
+                           <p class="posicao-reserva">Volante</p>
+                       </div>
+
+                       <div class="reserva" data-reserva="reserva5">
+                           <img src="imagens/reserva5.jpg" alt="reserva" style="display:none;">
+                           <span class="numero-reserva">16</span>
+                           <p class="nome-reserva">Gerson</p>
+                           <p class="posicao-reserva">Meia</p>
+                       </div>
+
+                       <div class="reserva" data-reserva="reserva6">
+                           <img src="imagens/reserva6.png" alt="reserva" style="display:none;">
+                           <span class="numero-reserva">17</span>
+                           <p class="nome-reserva">Endrick</p>
+                           <p class="posicao-reserva">Atacante</p>
+                       </div>
+
+                    </div>
+
+            </div>
+
+            <div class="analise-area">
+               <div class="analise-titulo">
+                   <h2>📊 Análise Tática</h2>
+                      <button class="btn-analisar" id="btnAnalisar">
+                           <i class="fas fa-search"></i> Analisar Escalação
+                      </button>
+                </div>
+            <div class="analise-resultado" id="analiseResultado">
+            <p class="analise-placeholder">Clique em "Analisar Escalação" para ver a análise tática completa</p>
+            </div>
+         </div>
+<div class="narracao-area">
+  <div class="narracao-titulo">
+    <h2>🎙️ Narração Tática</h2>
+    <div class="narracao-controles">
+      <select class="select-narrador" id="selectNarrador">
+        <option value="galvao">🎤 Estilo Galvão</option>
+        <option value="casagrande">📋 Estilo Casagrande</option>
+        <option value="caio">⚽ Estilo Caio Ribeiro</option>
+        <option value="jornalista">📰 Jornalismo Esportivo</option>
+      </select>
+      <button class="btn-narrar" id="btnNarrar">
+        <i class="fas fa-microphone"></i> Narrar Escalação
+      </button>
+    </div>
+  </div>
+  <div class="narracao-resultado" id="narracaoResultado">
+    <p class="narracao-placeholder">Selecione um estilo de narrador e clique em "Narrar Escalação"</p>
+  </div>
+</div>
+
+        </div> <!-- Fim da Coluna Esquerda -->
+
+        <!-- COLUNA DA DIREITA: PAINEL FIXO DO CARD SHOWCASE -->
+        <div class="coluna-direita">
+
+            <div class="painel-card-fixo">
+
+                <div id="cardFifaFixo" class="card-lateral"></div>
+                <div id="placeholderMensagem" class="placeholder-painel">
+                    <p>Passe o mouse em um jogador para ver os detalhes</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div> <!-- Fim do Conteúdo Principal -->
+
+    <!-- Animação de substituição (flutuante) -->
+    <div class="animacao-sub" id="animacaoSub">
+        <div class="sub-saindo">
+            <span class="seta-vermelha">⬇️</span>
+            <p class="sub-nome" id="subSaindo">Jogador</p>
+        </div>
+        <div class="sub-entrando">
+            <span class="seta-verde">⬆️</span>
+            <p class="sub-nome" id="subEntrando">Reserva</p>
+        </div>
+    </div>
+<!-- Overlay de exportação -->
+<div class="overlay-exportar" id="overlayExportar">
+  <div class="overlay-conteudo">
+    <p class="overlay-titulo">🇧🇷 Prancheta Exportada</p>
+    <div class="overlay-preview" id="overlayPreview"></div>
+    <div class="overlay-botoes">
+      <button class="btn-overlay btn-salvar" id="btnSalvarImagem">
+        <i class="fas fa-download"></i> Salvar Imagem
+      </button>
+      <button class="btn-overlay btn-fechar-overlay" id="btnFecharOverlay">
+        Fechar
+      </button>
+    </div>
+    <p class="overlay-loading" id="overlayLoading"></p>
+  </div>
+</div>
+<!-- TUTORIAL INTERATIVO -->
+<div class="tutorial-overlay" id="tutorialOverlay">
+
+  <div class="tutorial-spotlight" id="tutorialSpotlight"></div>
+
+  <div class="tutorial-card" id="tutorialCard">
+    <div class="tutorial-progresso">
+      <div class="tutorial-barra" id="tutorialBarra"></div>
+    </div>
+    <p class="tutorial-passo" id="tutorialPasso">1 / 8</p>
+    <div class="tutorial-icone" id="tutorialIcone">🖱️</div>
+    <h3 class="tutorial-titulo" id="tutorialTitulo">Título</h3>
+    <p class="tutorial-texto" id="tutorialTexto">Texto</p>
+    <div class="tutorial-botoes">
+      <button class="btn-tutorial-nav" id="btnTutorialAnterior">← Anterior</button>
+      <button class="btn-tutorial-pular" id="btnTutorialPular">Pular Tutorial</button>
+      <button class="btn-tutorial-nav btn-tutorial-proximo" id="btnTutorialProximo">Próximo →</button>
+    </div>
+  </div>
+
+</div>
+    <!-- Nosso JavaScript -->
+    <script src="campo.js"></script>
+    
+</body>
+</html>
